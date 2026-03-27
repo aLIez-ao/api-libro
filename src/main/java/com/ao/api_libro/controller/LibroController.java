@@ -50,6 +50,13 @@ public class LibroController {
         return ResponseEntity.ok(libroService.update(id, dto));
     }
 
+    // ─── POST batch ───────────────────────────────────────────────────────────
+    @PostMapping("/batch")
+    public ResponseEntity<List<LibroResponseDTO>> createAll(
+            @Valid @RequestBody List<LibroRequestDTO> dtos) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(libroService.saveAll(dtos));
+    }
+
     // ─── PATCH ────────────────────────────────────────────────────────────────
 
     @PatchMapping("/{id}")

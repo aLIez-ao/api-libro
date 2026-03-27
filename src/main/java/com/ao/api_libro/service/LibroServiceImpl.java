@@ -76,6 +76,20 @@ public class LibroServiceImpl implements LibroService {
         return toDTO(guardado);
     }
 
+    // ─── INSERT batch ─────────────────────────────────────────────────────────
+    @Override
+    @Transactional
+    public List<LibroResponseDTO> saveAll(List<LibroRequestDTO> dtos) {
+        List<Libro> libros = dtos.stream()
+                .map(this::toEntity)
+                .collect(Collectors.toList());
+
+        return libroRepository.saveAll(libros)
+                .stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
+    }
+
     // ─── UPDATE completo ──────────────────────────────────────────────────────
 
     @Override

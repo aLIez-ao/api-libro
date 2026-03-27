@@ -13,6 +13,8 @@ public interface LibroService {
 
     LibroResponseDTO save(LibroRequestDTO dto);
 
+    List<LibroResponseDTO> saveAll(List<LibroRequestDTO> dtos);
+
     LibroResponseDTO update(Long id, LibroRequestDTO dto);
 
     LibroResponseDTO partialUpdate(Long id, Map<String, Object> campos);
